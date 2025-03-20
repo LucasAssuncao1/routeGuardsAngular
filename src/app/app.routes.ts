@@ -3,6 +3,7 @@ import { HomeComponent } from './shared/pages/home/home.component';
 import { AccountComponent } from './shared/pages/account/account.component';
 import { canActiveGuard } from './shared/guards/can-active.guard';
 import { canDeactiveGuard } from './shared/guards/can-deactive.guard';
+import { canLoadGuard } from './shared/guards/can-load.guard';
 
 export const routes: Routes = [
     {
@@ -18,5 +19,6 @@ export const routes: Routes = [
     {
       path:'core',
       loadChildren: () => import('./core/core.module').then( (m) => m.CoreModule),
+      canMatch: [canLoadGuard],
   },
 ];
